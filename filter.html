@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Category Filter</title>
+
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        /* Dropdown */
+        select {
+            padding: 8px;
+            margin-bottom: 20px;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        /* Product Card */
+        .card {
+            background-color: white;
+            padding: 20px;
+            color: blue;
+            border-radius: 6px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Products</h2>
+
+<!-- Category Dropdown -->
+<select onchange="filterItems(this.value)">
+    <option value="all">All Categories</option>
+    <option value="clothing">Clothing</option>
+    <option value="electronics">Electronics</option>
+    <option value="food">Food</option>
+</select>
+
+<!-- Products -->
+<div class="product-grid">
+
+    <div class="card" data-category="clothing">
+        <h4>T-Shirt</h4>
+    </div>
+    <div class="card" data-category="electronics">
+        <h4>headphones</h4>
+    </div>
+    <div class="card" data-category="electronics">
+        <h4>speakers</h4>
+    </div>
+    <div class="card" data-category="electronics">
+        <h4>Smartphone</h4>
+    </div>
+
+    <div class="card" data-category="food">
+        <h4>Pizza</h4>
+    </div>
+    <div class="card" data-category="food">
+        <h4>cake</h4>
+    </div>
+
+    <div class="card" data-category="clothing">
+        <h4>Jacket</h4>
+    </div>
+    <div class="card" data-category="clothing">
+        <h4>shirts</h4>
+    </div>
+
+</div>
+
+<script>
+    function filterItems(category) {
+        const cards = document.querySelectorAll(".card");
+
+        cards.forEach(card => {
+            const itemCategory = card.getAttribute("data-category");
+
+            if (category === "all" || category === itemCategory) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

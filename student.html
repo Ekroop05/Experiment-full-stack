@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration</title>
+
+    <style>
+        .register-box {
+            width: 320px;
+            border: 2px solid black;
+            margin: 100px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        input {
+            width: 90%;
+            padding: 6px;
+        }
+
+        input[type="submit"] {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            cursor: pointer;
+            width: auto;
+        }
+
+        input[type="submit"]:hover {
+            background-color: darkgreen;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var age = document.getElementById("age").value;
+
+            var error = document.getElementById("error");
+            error.innerHTML = "";
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+
+<div class="register-box">
+    <h2>Student Registration</h2>
+
+    <form onsubmit="return validateForm()">
+        <input type="text" id="name" placeholder="Name" required><br><br>
+
+        <input type="email" id="email" placeholder="Email" required><br><br>
+
+        <input type="number" id="age" placeholder="Age" required=18><br><br>
+
+        <span id="error" class="error"></span><br><br>
+
+        <input type="submit" value="Register">
+    </form>
+</div>
+
+</body>
+</html>

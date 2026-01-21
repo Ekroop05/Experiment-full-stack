@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Character Counter</title>
+
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 400px;
+            margin: 100px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 10px;
+            font-size: 14px;
+            resize: none;
+        }
+        .counter {
+            margin-top: 8px;
+            font-size: 14px;
+            color: green;
+            text-align: right;
+        }
+
+        .counter.warning {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+<!--this is part where it will take the in put of words-->
+<div class="container">
+    <h3>Message</h3>
+    
+
+    <textarea id="textInput" maxlength="100"
+              oninput="countCharacters()"
+              placeholder="Type your message"></textarea>
+    <div id="counter" class="counter">
+        0 / 100 characters
+    </div>
+    
+</div>
+<script>
+    function countCharacters() {
+        let text = document.getElementById("textInput").value;
+        let count = text.length;
+        let counter = document.getElementById("counter");
+
+        counter.innerHTML = count + " / 100 characters";
+
+        if (count >= 90) {                               /* as it reaches the 90 words mark it turns red*/
+            counter.classList.add("warning");
+        } else {
+            counter.classList.remove("warning");
+        }
+    }
+</script>
+</body>
+</html>
