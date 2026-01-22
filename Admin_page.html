@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+
+    <style>
+        /* THIS PROVIDES THE COLOURS OF BACKGROUND*/
+        :root {
+            --bg-color: #f4f4f4;
+            --sidebar-color: #ffffff;
+            --card-color: #ffffff;
+            --text-color: #333;
+            --accent-color: #4CAF50;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1e1e1e;
+            --sidebar-color: #2c2c2c;
+            --card-color: #2c2c2c;
+            --text-color: #ffffff;
+            --accent-color: #66bb6a;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        /* FOR GRID*/
+        .dashboard {
+            display: grid;  
+            grid-template-columns: 220px 1fr;
+            height: 100vh;
+        }
+
+        .sidebar {
+            background-color: var(--sidebar-color);
+            padding: 20px;
+        }
+
+        .main {
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: var(--card-color);
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.3; /*Provides the hover effect when ever take our mouse over it and less is move effect*/
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="dashboard">
+    <div class="sidebar">
+        <h3>Admin</h3>
+        <p>Dashboard</p>
+        <p>Users</p>
+        <p>Settings</p>
+    </div>
+
+    <div class="main">
+        <div class="header">
+            <h2>Dashboard</h2>
+            <button onclick="toggleTheme()">Toggle Theme</button>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <h4>Sales</h4>
+                <p>1000</p>
+            </div>
+            <div class="card">
+                <h4>Users</h4>
+                
+            </div>
+            <div class="card">
+                <h4>Sessions</h4>
+                
+            </div>
+            <div class="card">
+                <h4>Status</h4>
+                <p style="color: var(--accent-color);">Online</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+        document.documentElement.setAttribute("data-theme", savedTheme);
+    }
+
+    function toggleTheme() {
+        let theme = document.documentElement.getAttribute("data-theme");
+
+        if (theme === "dark") {
+            document.documentElement.setAttribute("data-theme", "light");
+            localStorage.setItem("theme", "light");
+        } else {
+            document.documentElement.setAttribute("data-theme", "dark");
+            localStorage.setItem("theme", "dark");
+        }
+    }
+</script>
+
+</body>
+</html>
